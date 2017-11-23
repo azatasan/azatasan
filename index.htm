@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <div class="container" style="margin-top:50px;">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="btn-group" id="butonlar">
+                  <button class="btn btn-primary">Anasayfa</button>
+          <button class="btn btn-primary">Araçlarımız</button>
+          <button class="btn btn-primary">Müşterilerimiz</button>
+          <button class="btn btn-primary">Araç Kiralama</button>
+          
+        </div>
+        <div id="sayfalar" style="margin-top:20px">
+           
+           <div>
+           <h1>Anasayfa</h1>
+           <h3>Araç Kiralama Poratalımıza Hoşgeldiniz</h3>           
+            <img src="resim/resim.jpg" alt="" class="center-block img-responsive">
+
+           </div>
+           <div>
+           
+           <h1>Araçlarımız</h1>
+           <table class="table table-hover" id="tbKayitlar">
+             <tr class="bg-info">
+               <td>Plaka</td>
+               <td>Marka</td>
+               <td>Renk</td>
+               <td>Sil</td>
+             </tr>
+           </table>
+           <hr>
+        <h3>Araç Ekleyin</h3>
+            <table class="table table-hover">
+          <tr class="bg-info">
+            <td>Plaka</td>
+            <td>Marka</td>
+            <td>Renk</td>
+          </tr>
+          <tr class="">
+            <td>
+              <input type="text" class="form-control" id="txtPlaka">
+            </td>
+            <td>
+              <input type="text" class="form-control" id="txtMarka">
+            </td>
+            <td>
+              <input type="text" class="form-control" id="txtRenk">
+            </td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>
+              <button id="btnKaydet" class="btn btn-success btn-block">Aracı Ekle</button>
+            </td>
+          </tr>
+        </table>
+
+        
+      </div>
+      
+      <div>
+           <h1>Müşterilerimiz</h1>
+           <table class="table table-hover" id="tbKayitlar2">
+             <tr class="bg-info">
+               <td>Tc No</td>
+               <td>Adı Soyadı</td>
+               <td>Doğum Yeri</td>
+               <td>Sil</td>
+             </tr>
+           </table>
+           <hr>
+        <h3>Müşteri Ekleyin</h3>
+            <table class="table table-hover">
+          <tr class="bg-info">
+               <td>Tc No</td>
+               <td>Adı Soyadı</td>
+               <td>Doğum Yeri</td>
+          </tr>
+          <tr class="">
+            <td><input type="text" class="form-control" id="txtTc"></td>
+            <td><input type="text" class="form-control" id="txtAdsoyad"></td>
+            <td>
+              <input type="text" class="form-control" id="txtDyeri">
+            </td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>
+              <button id="btnKaydet2" class="btn btn-success btn-block">Müşteriyi Ekle</button>
+            </td>
+          </tr>
+        </table>
+           </div>
+           
+           
+      <div >
+<h1>Araç Kiralama</h1>
+<table class="table table-hover" id="tbKayitlar3">
+             <tr class="bg-info">
+               <td>Müşteri Tc</td>
+               <td>Araç Plaka</td>
+               <td>Kiralama Süresi</td>
+               <td>Sil</td>
+             </tr>
+          </table>
+           <hr>
+          <h3>Araç Kiralayın</h3>
+            <table class="table table-hover">
+          <tr class="bg-info">
+               <td>Müşteri Tc</td>
+               <td>Araç Plaka</td>
+               <td>Kaç Günlük</td>
+          </tr>
+          <tr class="">
+            <td><select name="ddKayitlar" class="form-control" id="ddKayitlar2">
+            </select></td>
+            <td><select name="ddKayitlar2" class="form-control" id="ddKayitlar">
+            </select></td>
+            <td>
+              <input type="text" class="form-control" id="txtsure">
+            </td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>
+              <button id="btnKaydet3" class="btn btn-success btn-block">Aracı Kirala</button>
+            </td>
+          </tr>
+        </table>
+        
+        
+      </div>
+           </div>
+            
+            
+            
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/jquery-3.2.1.js"></script>
+  <script>
+    $(function () {
+
+      $("#butonlar button:first").removeClass();
+      $("#butonlar button:first").addClass("btn btn-danger");
+
+      $("#sayfalar div").hide();
+      $("#sayfalar div:first").show();
+
+
+      $("#butonlar button").click(function () {
+
+        var index = $(this).index();
+        $("#butonlar button").removeClass();
+        $("#butonlar button").addClass("btn btn-primary");
+        $("#butonlar button:eq(" + index + ")").addClass("btn btn-danger");
+
+        $("#sayfalar div").slideUp();
+        $("#sayfalar div:eq(" + index + ")").slideDown();
+		
+		 var kayitlar = [
+        { plaka: "07asd13", marka: "ford fiesta", renk: "kırmızı" },
+        { plaka: "07df123", marka: "opel corsa", renk: "beyaz" },
+        { plaka: "07jh456", marka: "citroen c3", renk: "sihay" },
+        { plaka: "07f4568", marka: "fiat doblo", renk: "krem" },
+        { plaka: "34kj159", marka: "renault clio", renk: "beyaz" },
+        { plaka: "07azt73", marka: "honda civic", renk: "gümüş" }
+
+      ];
+
+      console.log(JSON.stringify(kayitlar));
+
+      $.kayitGetir = function () {
+
+        $("#ddKayitlar").empty();
+
+        var ilk = $("#tbKayitlar tr:first").clone();
+        $("#tbKayitlar tr").remove();
+        $("#tbKayitlar").append(ilk);
+        console.log(ilk);
+
+
+        $.each(kayitlar, function (i, kayit) {
+          var satir = "<tr><td>" + kayit.plaka + "</td><td>" + kayit.marka + "</td><td>" + kayit.renk + "</td><td><button class='btn btn-danger sil'>Sil</button></td></tr>";
+          $("#tbKayitlar").append(satir);
+
+          var opt = "<option value='" + kayit.plaka + "'>" + kayit.plaka + "</option>";
+          $("#ddKayitlar").append(opt);
+
+        });
+
+      };
+      $.kayitGetir();
+      $("#btnKaydet").click(function () {
+
+        var plaka = $("#txtPlaka").val();
+        var marka = $("#txtMarka").val();
+        var renk = $("#txtRenk").val();
+        if (plaka == "" || marka == "" || renk == "") {
+          alert("Lütfen Tüm Alanları Doldurunuz!");
+          return false;
+        }
+
+
+        var yeniKayit = {};
+        yeniKayit.plaka = plaka;
+        yeniKayit.marka = marka;
+        yeniKayit.renk = renk;
+
+        kayitlar.push(yeniKayit);
+        $.kayitGetir();
+		$("#txtPlaka").val("");
+		$("#txtMarka").val("");
+		$("#txtRenk").val("");
+      });
+	  
+
+			 
+			 
+			 
+			 
+			 var kayitlar2 = [
+        { tc: "15987645862", adsoyad: "ali can", dyeri: "antalya" },
+        { tc: "36985475614", adsoyad: "mehmet dal", dyeri: "istanbul" },
+        { tc: "27598462150", adsoyad: "ahmet ilkcan", dyeri: "ankara" },
+        { tc: "20145675210", adsoyad: "nurcan baş", dyeri: "mersin" },
+        { tc: "85479604530", adsoyad: "nuri kıl", dyeri: "çorum" },
+        { tc: "14895713725", adsoyad: "fatma seçkin", dyeri: "bursa" }
+
+      ];
+
+      console.log(JSON.stringify(kayitlar2));
+
+      $.kayitGetir2 = function () {
+
+        $("#ddKayitlar2").empty();
+
+        var ilk2 = $("#tbKayitlar2 tr:first").clone();
+        $("#tbKayitlar2 tr").remove();
+        $("#tbKayitlar2").append(ilk2);
+        console.log(ilk2);
+
+
+        $.each(kayitlar2, function (s, kayit2) {
+          var satir2 = "<tr><td>" + kayit2.tc + "</td><td>" + kayit2.adsoyad + "</td><td>" + kayit2.dyeri + "</td><td><button class='btn btn-danger sil'>Sil</button></td></tr>";
+          $("#tbKayitlar2").append(satir2);
+
+          var opt2 = "<option value='" + kayit2.tc + "'>" + kayit2.tc + "</option>";
+          $("#ddKayitlar2").append(opt2);
+
+        });
+
+      };
+      $.kayitGetir2();
+      $("#btnKaydet2").click(function () {
+
+        var tc = $("#txtTc").val();
+        var adsoyad = $("#txtAdsoyad").val();
+        var dyeri = $("#txtDyeri").val();
+        if (tc == "" || adsoyad == "" || dyeri == "") {
+          alert("Lütfen Tüm Alanları Doldurunuz!");
+          return false;
+        }
+
+
+        var yeniKayit2 = {};
+        yeniKayit2.tc = tc;
+        yeniKayit2.adsoyad = adsoyad;
+        yeniKayit2.dyeri = dyeri;
+
+        kayitlar2.push(yeniKayit2);
+        $.kayitGetir2();
+		$("#txtTc").val("");
+		$("#txtAdsoyad").val("");
+		$("#txtDyeri").val("");
+      });
+	  
+	  
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 var kayitlar3 = [
+        { mtc: "15987645862", aplaka: "07asd13", sure: "2" },
+        { mtc: "36985475614", aplaka: "07df123", sure: "5" },
+        { mtc: "27598462150", aplaka: "07jh456", sure: "3" },
+
+      ];
+
+      console.log(JSON.stringify(kayitlar3));
+
+      $.kayitGetir3 = function () {
+
+        
+
+        var ilk3 = $("#tbKayitlar3 tr:first").clone();
+        $("#tbKayitlar3 tr").remove();
+        $("#tbKayitlar3").append(ilk3);
+        console.log(ilk3);
+
+
+        $.each(kayitlar3, function (t, kayit3) {
+          var satir3 = "<tr><td>" + kayit3.mtc + "</td><td>" + kayit3.aplaka + "</td><td>" + kayit3.sure + "</td><td><button class='btn btn-danger sil'>Sil</button></td></tr>";
+          $("#tbKayitlar3").append(satir3);
+
+          
+
+        });
+
+      };
+      $.kayitGetir3();
+      $("#btnKaydet3").click(function () {
+
+        var mtc = $("#ddKayitlar2").val();
+        var aplaka = $("#ddKayitlar").val();
+        var sure = $("#txtsure").val();
+        if (sure == "") {
+          alert("Lütfen Tüm Alanları Doldurunuz!");
+          return false;
+        }
+
+
+        var yeniKayit3 = {};
+        yeniKayit3.mtc = mtc;
+        yeniKayit3.aplaka = aplaka;
+        yeniKayit3.sure = sure;
+
+        kayitlar3.push(yeniKayit3);
+        $.kayitGetir3();
+        $("#txtsure").val("");
+      }); 
+    });
+	
+		  	  $(document).on("click", ".sil", function () {
+        var satir = $(this).closest("tr");
+        satir.remove();
+
+        var satir2 = $(this).closest("tr");
+        satir2.remove();
+
+        var satir3 = $(this).closest("tr");
+        satir3.remove();
+             });
+	});
+  </script>
+</body>
+
+</html>
